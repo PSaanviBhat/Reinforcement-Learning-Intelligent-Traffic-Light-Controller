@@ -13,6 +13,38 @@ Output: 3-way split (70-15-15) in both PICKLE and CSV formats
 2. PREPROCESSING STEPS PERFORMED
 ================================================================================
 
+Synthetic Waiting Time Generation 
+Two New Columns Added
+   1. waiting_time_seconds - Total waiting time at the intersection (2-300 seconds range)
+   2. avg_waiting_per_vehicle - Average waiting time per individual vehicle (0-7.5 seconds range)
+
+Methodology - 10 Governing Factors
+   1. Signal Status Impact (Primary Factor)
+         Red signals: Mean 274.25s (highest waiting)
+         Yellow signals: Mean 190.31s (moderate waiting)
+         Green signals: Mean 42.71s (minimal waiting)
+   2. Traffic Density Factors
+         Queue density = traffic_volume / avg_vehicle_speed
+         Vehicle density = cars + trucks + bikes
+         Higher density → longer waiting times
+   3. Weather Conditions (1.0-1.3x multiplier)
+         Rainy: 178.10s average (highest impact)
+         Foggy: 176.56s average
+         Sunny: 174.05s average (baseline)
+         Cloudy/Windy: 170-172s average
+   4. Heavy Vehicle Penalty
+         Truck ratio increases waiting by up to 50%
+         Trucks slow down traffic flow significantly
+   5. Emergency/Accident Impact
+         With accidents: 198.96s average (15% higher)
+         Without accidents: 172.61s average
+         2x multiplier applied when accident_reported = 1
+   6. Peak Hour Effects
+         Peak hours (7-10 AM, 5-8 PM): 1.4x multiplier
+         Off-peak: 1.0x multiplier
+   7. Realistic Noise
+         ±10% random variation to simulate real-world unpredictability
+
 Step 1: Temporal Feature Extraction
    - hour: Hour of day (0-23) extracted from timestamp
    - minute: Minute of hour (0-59) 
