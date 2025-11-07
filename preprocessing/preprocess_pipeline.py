@@ -38,7 +38,7 @@ def generate_waiting_time(df):
     df = df.drop(columns=cols_to_drop)
     return df
 
-def preprocess_traffic_data(input_file='smart_traffic_with_waiting_time.csv'):
+def preprocess_traffic_data(input_file='smart_traffic_management_dataset.csv'):
     print("="*80)
     print("TRAFFIC DATA PREPROCESSING PIPELINE")
     print("="*80)
