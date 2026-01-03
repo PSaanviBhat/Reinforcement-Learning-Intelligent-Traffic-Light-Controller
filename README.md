@@ -59,13 +59,13 @@ Interpretation:
 
 🔁 Training Strategy:
 Training is performed in multiple phases:
-Base Training
-PPO trained from scratch
-Fixed learning rate
-Fine-Tuning
-Continue training from saved checkpoint
-Lower learning rate for stability
-Scheduler-Based Training
+    Base Training
+    PPO trained from scratch
+    Fixed learning rate
+    Fine-Tuning
+    Continue training from saved checkpoint
+    Lower learning rate for stability
+    Scheduler-Based Training
 Learning rate reduced automatically when performance plateaus improves convergence and reduces reward noise
 
 📈 Results & Observations:
@@ -76,22 +76,20 @@ Learning rate reduced automatically when performance plateaus improves convergen
 Note: In RL, absolute reward values are less important than trend and stability.
 
 Testing & Evaluation:
-Evaluation is performed without exploration
-The trained policy selects actions greedily
-Performance is measured as average episode reward on unseen data
+Evaluation is performed without exploration. The trained policy selects actions greedily. Performance is measured as average episode reward on unseen data.
 
 How to Run (High-Level):
-Preprocess dataset using scripts in preprocessing/
-Initialize environment and PPO agent
-Run base training → fine-tuning → scheduler training
-Evaluate trained model on test data
-(Optional) Visualize traffic signals using UI module
+1. Preprocess dataset using scripts in preprocessing/
+2. Initialize environment and PPO agent
+3. Run base training → fine-tuning → scheduler training
+4. Evaluate trained model on test data
+5. (Optional) Visualize traffic signals using UI module
 
 Key Takeaways:
-Reinforcement Learning can effectively optimize traffic control
-Reward normalization is crucial for stable training
-Learning rate tuning significantly impacts convergence
-Modular project structure improves scalability and clarity
+- Reinforcement Learning can effectively optimize traffic control
+- Reward normalization is crucial for stable training
+- Learning rate tuning significantly impacts convergence
+- Modular project structure improves scalability and clarity
 
 Future Improvements:
 - Multi-intersection control
